@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".RegisterActivity"
+    android:background="@drawable/bg">
+
+    <TextView
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textColor="@color/white"
+        android:textSize="35dp"
+        android:textStyle="bold"
+        android:layout_margin="50dp"
+        android:gravity="center"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/inputname"
+        android:layout_below="@+id/register"
+        android:background="#30ffffff"
+        android:hint="Name"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:padding="20dp"
+        android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+        android:drawablePadding="20dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/inputpassword"
+        android:layout_below="@+id/inputnumber"
+        android:background="#30ffffff"
+        android:hint="Password"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:padding="20dp"
+        android:drawableLeft="@drawable/ic_baseline_info_24"
+        android:drawablePadding="20dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/inputnumber"
+        android:layout_below="@+id/inputname"
+        android:background="#30ffffff"
+        android:hint="Number"
+        android:textColorHint="@color/white"
+        android:textColor="@color/white"
+        android:layout_margin="10dp"
+        android:padding="20dp"
+        android:drawableLeft="@drawable/ic_baseline_numbers_24"
+        android:drawablePadding="20dp"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/sendverifybtnbtn"
+        android:layout_width="267dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inputpassword"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="77dp"
+        android:backgroundTint="@color/purple_700"
+        android:text="Send Verification Code"
+        android:textColor="@color/white" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/verifybtn"
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sendverifybtnbtn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginEnd="144dp"
+        android:backgroundTint="@color/purple_700"
+        android:text="VERIFY"
+        android:textColor="@color/white" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/registerbtn"
+        android:layout_width="119dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/verifybtn"
+        android:layout_alignParentStart="true"
+
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="151dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="140dp"
+        android:backgroundTint="@color/purple_700"
+        android:text="SIGN UP"
+        android:textColor="@color/white" />
+
+</RelativeLayout>
