@@ -44,7 +44,7 @@ public class Control extends AppCompatActivity {
 
     Button lockbtn, bluetooth_connect_btn;
     TextView lockstate;
-    ImageView lockstate_img;
+    ImageView lock_img;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +54,7 @@ public class Control extends AppCompatActivity {
         bluetooth_connect_btn = (MaterialButton) findViewById(R.id.bluetooth_connect_btn);
         lockbtn = (MaterialButton) findViewById(R.id.lockbtn);
         lockstate = (TextView) findViewById(R.id.lockstate);
-        //lockstate_img = (ImageView) findViewById(R.id.lockstate_img);
+        lock_img = (ImageView) findViewById(R.id.lock_img);
 
         bluetooth_connect_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,17 +112,13 @@ public class Control extends AppCompatActivity {
                             @Override
                             public void run() {
                             }
-                            if(string.)
-
-                            {
+                            if(string.equals("4")){
                                 lockstate.setText("Lock State: Door is Locked");
-                                //lockstate_img.setImageResource(R.drawable.locked_icon);
+                                lock_img.setImageResource(R.drawable.lockstate);
                             }
-                            else if(string.equals("4"))
-
-                            {
+                            else if(string.equals("4")){
                                 lockstate.setText("Lock State: Door is Unlocked");
-                                //lockstate_img.setImageResource(R.drawable.unlocked_icon);
+                                lock_img.setImageResource(R.drawable.unlockstate);
                             }
                         });
                     }
