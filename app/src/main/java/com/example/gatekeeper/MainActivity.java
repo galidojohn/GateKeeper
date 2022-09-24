@@ -1,57 +1,78 @@
 package com.example.gatekeeper;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
 
     private MaterialButton loginbtn;
     private MaterialButton registerbtn;
-    private MaterialButton verifybtn;
 
+    EditText iunputemail = (EditText) findViewById(R.id.inputemail);
+    EditText inputpassword = (EditText) findViewById(R.id.inputpassword);
     FirebaseAuth mAuth;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         //textView
-        TextView name = (TextView) findViewById(R.id.inputname);
-        TextView password = (TextView) findViewById(R.id.inputpassword);
-        TextView register = findViewById(R.id.registerbtn);
+        TextView logemail = (TextView) findViewById(R.id.inputemail);
+        TextView logpassword = (TextView) findViewById(R.id.inputpassword);
 
         //buttons
-         loginbtn = (MaterialButton) findViewById(R.id.loginbtn);
-         registerbtn = (MaterialButton) findViewById(R.id.registerbtn);
-         verifybtn = (MaterialButton) findViewById(R.id.verifybtn);
-         mAuth = FirebaseAuth.getInstance();
+        loginbtn = (MaterialButton) findViewById(R.id.loginbtn);
+        registerbtn = (MaterialButton) findViewById(R.id.registerbtn);
+        mAuth = FirebaseAuth.getInstance();
 
-        loginbtn.setOnClickListener(new View.OnClickListener() {
+        return loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(name.getText().toString().equals("admin") && password.getText().toString().equals("admin")) {
-                    Intent intent = new Intent(MainActivity.this, Control.class);
-                    startActivity(intent);
-                    Toast.makeText(MainActivity.this, "Login Successfull", Toast.LENGTH_SHORT).show();
-                }else
-                    Toast.makeText(MainActivity.this, "Login Failed", Toast.LENGTH_SHORT).show();
-            }
+                String em = logemail.getText().toString();
+                String pass = logemail.getText().toString();
 
-        });
-        registerbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-                startActivity(intent);
+                if (TextUtils.isEmpty(em)) {
+                    logemail.setError("Email cannot be empty");
+                    logemail.requestFocus();
+                } else if (TextUtils.isEmpty(pass)) {
+                    inputpassword.setError("Password cannot be empty");
+                    inputpassword.requestFocus();
+                } else {
+                    mAuth.signInWithEmailAndPassword(em, pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(MainActivity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
+                                startActivity(new Intent(MainActivity.this, MainActivity.class));
+                            } else {
+                                Toast.makeText(MainActivity.this, "Registration error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
             }
-        });
-    }
-}
+        }
+
+
+    };
+
+
+
+
+
