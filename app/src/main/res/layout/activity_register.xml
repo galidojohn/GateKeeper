@@ -21,7 +21,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/inputname"
+        android:id="@+id/regname"
         android:layout_below="@+id/register"
         android:background="#30ffffff"
         android:hint="Name"
@@ -33,72 +33,66 @@
         android:drawablePadding="20dp"/>
 
     <EditText
+        android:id="@+id/regpassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/inputpassword"
-        android:layout_below="@+id/inputnumber"
+        android:layout_below="@+id/regemail"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="#30ffffff"
-        android:hint="Password"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:layout_margin="10dp"
-        android:padding="20dp"
         android:drawableLeft="@drawable/ic_baseline_info_24"
-        android:drawablePadding="20dp"/>
+        android:drawablePadding="20dp"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
 
     <EditText
+        android:id="@+id/regrepassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/inputnumber"
-        android:layout_below="@+id/inputname"
+        android:layout_below="@+id/regpassword"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:background="#30ffffff"
-        android:hint="Number"
-        android:textColorHint="@color/white"
-        android:textColor="@color/white"
-        android:layout_margin="10dp"
+        android:drawableLeft="@drawable/ic_baseline_info_24"
+        android:drawablePadding="20dp"
+        android:hint="Confirm Password"
+        android:inputType="textPassword"
         android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
+
+    <EditText
+        android:id="@+id/regemail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/regname"
+        android:layout_margin="10dp"
+        android:background="#30ffffff"
         android:drawableLeft="@drawable/ic_baseline_numbers_24"
-        android:drawablePadding="20dp"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/sendverifybtnbtn"
-        android:layout_width="267dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/inputpassword"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="67dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="77dp"
-        android:backgroundTint="@color/purple_700"
-        android:text="Send Verification Code"
-        android:textColor="@color/white" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/verifybtn"
-        android:layout_width="119dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/sendverifybtnbtn"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="148dp"
-        android:layout_marginTop="25dp"
-        android:layout_marginEnd="144dp"
-        android:backgroundTint="@color/purple_700"
-        android:text="VERIFY"
-        android:textColor="@color/white" />
+        android:drawablePadding="20dp"
+        android:hint="Email"
+        android:padding="20dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/registerbtn"
         android:layout_width="119dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/verifybtn"
+        android:layout_below="@id/regrepassword"
         android:layout_alignParentStart="true"
 
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="151dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="140dp"
+        android:layout_marginStart="145dp"
+        android:layout_marginTop="43dp"
+        android:layout_marginEnd="146dp"
         android:backgroundTint="@color/purple_700"
         android:text="SIGN UP"
         android:textColor="@color/white" />
