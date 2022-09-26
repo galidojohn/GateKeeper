@@ -3,6 +3,7 @@ package com.example.gatekeeper;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -19,31 +20,30 @@ import com.google.firebase.auth.FirebaseAuth;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    EditText regname = (EditText) findViewById(R.id.regname);
-    EditText regemail = (EditText) findViewById(R.id.regemail);
-    EditText regpassword = (EditText) findViewById(R.id.regpassword);
-    EditText regrepassword = (EditText) findViewById(R.id.regrepassword);
-    TextView register = findViewById(R.id.registerbtn);
+    EditText inputname, regemail, regpassword, regrepassword;
+    private MaterialButton registerbtn1;
     FirebaseAuth mAuth;
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        regname = findViewById(R.id.regname);
+        inputname = findViewById(R.id.inputname);
         regemail = findViewById(R.id.regemail);
         regpassword = findViewById(R.id.regpassword);
         regrepassword = findViewById(R.id.regrepassword);
+        registerbtn1 = (MaterialButton) findViewById(R.id.registerbtn1);
 
         mAuth = FirebaseAuth.getInstance();
-        register.setOnClickListener(new View.OnClickListener() {
+        registerbtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 createUser();
             }
         });
-        register.setOnClickListener(new View.OnClickListener() {
+        registerbtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 createUser();

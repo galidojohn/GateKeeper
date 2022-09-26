@@ -22,11 +22,7 @@ public class MainActivity extends AppCompatActivity {
     private MaterialButton loginbtn;
     private MaterialButton registerbtn;
 
-    EditText iunputemail = (EditText) findViewById(R.id.inputemail);
-    EditText inputpassword = (EditText) findViewById(R.id.inputpassword);
     FirebaseAuth mAuth;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,14 +30,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //textView
         TextView logemail = (TextView) findViewById(R.id.inputemail);
-        TextView logpassword = (TextView) findViewById(R.id.inputpassword);
 
         //buttons
         loginbtn = (MaterialButton) findViewById(R.id.loginbtn);
         registerbtn = (MaterialButton) findViewById(R.id.registerbtn);
         mAuth = FirebaseAuth.getInstance();
 
-        return loginbtn.setOnClickListener(new View.OnClickListener() {
+        registerbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(MainActivity.this,RegisterActivity.class));
+            }
+        });
+        loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String em = logemail.getText().toString();
@@ -51,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
                     logemail.setError("Email cannot be empty");
                     logemail.requestFocus();
                 } else if (TextUtils.isEmpty(pass)) {
+                    TextView inputpassword = (TextView) findViewById(R.id.inputpassword);
                     inputpassword.setError("Password cannot be empty");
                     inputpassword.requestFocus();
                 } else {
@@ -59,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 Toast.makeText(MainActivity.this, "User registered successfully", Toast.LENGTH_SHORT).show();
-                                startActivity(new Intent(MainActivity.this, MainActivity.class));
+                                startActivity(new Intent(MainActivity.this, Control.class));
                             } else {
                                 Toast.makeText(MainActivity.this, "Registration error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                             }
@@ -67,12 +69,7 @@ public class MainActivity extends AppCompatActivity {
                     });
                 }
             }
-        }
+        });
 
-
-    };
-
-
-
-
-
+    }
+}
