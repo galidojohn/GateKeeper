@@ -27,7 +27,6 @@ public class MainActivity extends AppCompatActivity {
     FirebaseAuth mAuth;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         registerbtn = (MaterialButton) findViewById(R.id.registerbtn);
         mAuth = FirebaseAuth.getInstance();
 
-        return loginbtn.setOnClickListener(new View.OnClickListener() {
+        loginbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String em = logemail.getText().toString();
@@ -67,12 +66,8 @@ public class MainActivity extends AppCompatActivity {
                     });
                 }
             }
-        }
+        });
 
 
-    };
-
-
-
-
-
+    }
+}
