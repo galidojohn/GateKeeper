@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">GateKeeper</string>
+
+<array name="entry">
+    <item>Name</item>
+    <item>Email</item>
+    <item>Password</item>
+    <item>Confirm Password</item>
+</array>
 </resources>

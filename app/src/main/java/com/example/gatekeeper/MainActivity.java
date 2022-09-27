@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         //textView
         TextView logemail = (TextView) findViewById(R.id.inputemail);
-
+        TextView logpass = (TextView) findViewById(R.id.inputpassword);
         //buttons
         loginbtn = (MaterialButton) findViewById(R.id.loginbtn);
         registerbtn = (MaterialButton) findViewById(R.id.registerbtn);
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String em = logemail.getText().toString();
-                String pass = logemail.getText().toString();
+                String pass = logpass.getText().toString();
 
                 if (TextUtils.isEmpty(em)) {
                     logemail.setError("Email cannot be empty");

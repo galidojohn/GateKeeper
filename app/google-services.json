@@ -1,18 +1,27 @@
 {
   "project_info": {
     "project_number": "134929303259",
+    "firebase_url": "https://gatekeeper-9cd17-default-rtdb.asia-southeast1.firebasedatabase.app",
     "project_id": "gatekeeper-9cd17",
     "storage_bucket": "gatekeeper-9cd17.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:134929303259:android:c1d5f0fa6bbaa6cf382efe",
+        "mobilesdk_app_id": "1:134929303259:android:e10f84c1fd5f6e93382efe",
         "android_client_info": {
           "package_name": "com.example.gatekeeper"
         }
       },
       "oauth_client": [
+        {
+          "client_id": "134929303259-jsiap6bj4obrsm7kou7a31j8eco3r224.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.gatekeeper",
+            "certificate_hash": "284bc841033487d84cb7baa22fee7e1a6e2f60da"
+          }
+        },
         {
           "client_id": "134929303259-hvcabldteuoeritrism99422t7abmnbp.apps.googleusercontent.com",
           "client_type": 3
