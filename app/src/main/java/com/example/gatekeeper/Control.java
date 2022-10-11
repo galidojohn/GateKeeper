@@ -1,5 +1,6 @@
 package com.example.gatekeeper;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -7,7 +8,9 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.content.Intent;
-import android.view.MotionEvent;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -20,9 +23,6 @@ import java.util.Set;
 import java.util.UUID;
 import android.os.Handler;
 
-import com.google.android.material.button.MaterialButton;
-
-
 public class Control extends AppCompatActivity {
 
     private final String DEVICE_ADDRESS = "98:D3:31:90:82:9A"; //MAC Address of Bluetooth Module
@@ -34,6 +34,23 @@ public class Control extends AppCompatActivity {
     private OutputStream outputStream;
     private InputStream inputStream;
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.logout:
+                startActivity(new Intent(Control.this,MainActivity.class));
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.settings, menu);
+        return true;
+    }
+
     Thread thread;
     byte buffer[];
 
@@ -41,7 +58,7 @@ public class Control extends AppCompatActivity {
     boolean connected = false;
     String command;
 
-    Button lockbtn, bluetooth_connect_btn, prof;
+    Button lockbtn, bluetooth_connect_btn;
 
     TextView lockstate;
 
@@ -52,18 +69,11 @@ public class Control extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_control);
 
-        lockbtn = (MaterialButton) findViewById(R.id.lockbtn);
+        lockbtn = (Button) findViewById(R.id.lockbtn);
         bluetooth_connect_btn = (Button) findViewById(R.id.bluetooth_connect_btn);
-        prof = (Button) findViewById(R.id.prof);
         lockstate = (TextView) findViewById(R.id.lockstate);
         lock_img = (ImageView) findViewById(R.id.lock_img);
 
-        prof.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(Control.this, Profile.class));
-            }
-        });
         bluetooth_connect_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){

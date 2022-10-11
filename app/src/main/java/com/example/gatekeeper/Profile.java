@@ -1,94 +1,65 @@
 package com.example.gatekeeper;
 
-import androidx.annotation.NonNull;
+
+import android.content.Intent;
 import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.os.Bundle;
-
-import com.google.android.material.button.MaterialButton;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import android.widget.ImageView;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class Profile extends AppCompatActivity {
-
-    FirebaseAuth mAuth;
-    private FirebaseDatabase db = FirebaseDatabase.getInstance();
-    private DatabaseReference root = db.getReference().child("Users");
-    private StorageReference reference = FirebaseStorage.getInstance().getReference();
-
-    ImageView profile;
-    private MaterialButton updatebtn;
-    private String name, email, password;
-    private TextView editname;
-    private TextView editemail;
-    private TextView editpassword;
-
-    @SuppressLint("WrongViewCast")
+    FirebaseAuth firebaseAuth;
+    TextView titleemail, titlepassword, nametitle;
+    Button updatebtn;
+    EditText regname1;
+    EditText regemail1;
+    EditText regpassword1;
+    DatabaseReference databaseReference;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
-
-        profile = findViewById(R.id.profile);
-        updatebtn = findViewById(R.id.updatebtn);
-        editname = findViewById(R.id.editname);
-        editemail = findViewById(R.id.editemail);
-        editpassword = findViewById(R.id.editpassword);
-
-        mAuth = FirebaseAuth.getInstance();
-        FirebaseUser firebaseUser = mAuth.getCurrentUser();
-
-        if (firebaseUser == null){
-            Toast.makeText(Profile.this, "Something went wrong",Toast.LENGTH_SHORT).show();
-        }else {
-            showProfile(firebaseUser);
+        firebaseAuth = FirebaseAuth.getInstance();
+        if(firebaseAuth.getCurrentUser() == null){
+            return;
         }
-    }
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        regemail1 = (EditText) findViewById(R.id.regemail1);
+        regemail1.setText(""+user.getEmail());
 
+        regname1 = (EditText) findViewById(R.id.regname1);
+        regname1.setText(""+user.getEmail());
 
-    private void showProfile(FirebaseUser firebaseUser) {
-        String userId = firebaseUser.getUid();
+        regpassword1 = (EditText) findViewById(R.id.regpassword1);
+        regname1.setText(""+user.getEmail());
 
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        reference.child(userId).addListenerForSingleValueEvent(new ValueEventListener() {
+        databaseReference = FirebaseDatabase.getInstance().getReference();
+        updatebtn = (Button)findViewById(R.id.updatebtn);
+        updatebtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                UsersHelper helper = snapshot.getValue(UsersHelper.class);
-                if (helper != null){
-                    name = firebaseUser.getDisplayName();
-                    email = firebaseUser.getEmail();
-
-                    name = helper.name;
-                    email = helper.email;
-                    password = helper.password;
-
-                    editname.setText(name);
-                    editemail.setText(email);
-                    editpassword.setText(password);
-
-                }
-
+            public void onClick(View v) {
+                saveUserInfo();
+                startActivity(new Intent(Profile.this,Control.class));
             }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-                Toast.makeText(Profile.this, "Something went wrong",Toast.LENGTH_SHORT).show();
-            }
-        });{
-
-        }
+        });
     }
+    private void saveUserInfo(){
+        String name = regname1.getText().toString().trim();
+        String email = regemail1.getText().toString().trim();
+        String password = regpassword1.getText().toString();
 
+        UsersHelper helper = new UsersHelper(name,email, password);
+        FirebaseUser user = firebaseAuth.getCurrentUser();
+        databaseReference.child(user.getUid()).setValue(helper);
+        Toast.makeText(this, "INFO SAVED...",Toast.LENGTH_SHORT).show();
+        startActivity(new Intent(getApplicationContext(),Control.class));
+    }
 }

@@ -74,15 +74,15 @@ public class RegisterActivity extends AppCompatActivity {
                     if (task.isSuccessful()){
                         //pushing data to realtime database
                         String name = regname.getText().toString();
-                        root.child("Users").setValue(name);
                         String email = regemail.getText().toString();
-                        root.setValue(email);
                         String password = regpassword.getText().toString();
-                        root.setValue(password);
+
                         HashMap<String, String> userMap = new HashMap<>();
+
                         userMap.put("name", name);
                         userMap.put("email", email);
                         userMap.put("password", password);
+
                         root.push().setValue(userMap);
                         //popup message
                         Toast.makeText(RegisterActivity.this, "User registered successfully", Toast.LENGTH_SHORT).show();

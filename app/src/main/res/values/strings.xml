@@ -1,10 +1,17 @@
 <resources>
     <string name="app_name">GateKeeper</string>
+    <string name="email_id" />
+    <string name="nameView" />
+    <string name="phoneView" />
+    <string name="edit_profileButton" />
+    <!-- to toggle the open close button of the navigation drawer -->
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
 
-<array name="entry">
-    <item>Name</item>
-    <item>Email</item>
-    <item>Password</item>
-    <item>Confirm Password</item>
-</array>
+    <array name="entry">
+        <item>Name</item>
+        <item>Email</item>
+        <item>Password</item>
+        <item>Confirm Password</item>
+    </array>
 </resources>

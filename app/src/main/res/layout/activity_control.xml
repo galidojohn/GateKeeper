@@ -1,97 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Control"
-    android:background="@drawable/bg">
+    android:background="@drawable/bg"
+    tools:context=".Control">
 
-    <TextView
-        android:id="@+id/lockstate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/lock_img"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="47dp"
-        android:text="Door is:"
-        android:textColor="@color/white"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="215dp"
+            android:layout_height="59dp"
+            android:gravity="center"
+            android:text="GateKeeper"
+            android:textColor="@color/white"
+            android:textSize="35dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.474"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.093" />
 
-    <TextView
-        android:id="@+id/title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
-        android:gravity="center"
-        android:text="GateKeeper"
-        android:layout_below="@+id/prof"
-        android:textColor="@color/white"
-        android:textSize="35dp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="Your safety is our number 1 priority"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-    <Button
-        android:id="@+id/prof"
-        android:layout_width="wrap_content"
-        android:layout_height="76dp"
-        android:layout_marginLeft="310dp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/ic_baseline_person_24" />
+        <ImageView
+            android:id="@+id/lock_img"
+            android:layout_width="229dp"
+            android:layout_height="222dp"
+            android:layout_marginTop="84dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:srcCompat="@drawable/lockstate" />
 
-    <TextView
-        android:id="@+id/subtitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/title"
-        android:layout_marginTop="8dp"
-        android:gravity="center"
-        android:text="Your safety is our number 1 priotity"
-        android:textColor="@color/white"
-        android:textStyle="italic"
-        android:textSize="18dp"/>
+        <Button
+            android:id="@+id/lockbtn"
+            android:layout_width="222dp"
+            android:layout_height="87dp"
+            android:layout_marginTop="80dp"
+            android:text="Unlock"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.513"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lock_img" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/lockbtn"
-        android:layout_width="236dp"
-        android:layout_height="88dp"
-        android:layout_below="@id/lockstate"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="83dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="90dp"
-        android:backgroundTint="@color/common_google_signin_btn_text_light"
-        android:text="unlock"
-        android:textColor="@color/white" />
+        <Button
+            android:id="@+id/bluetooth_connect_btn"
+            android:layout_width="221dp"
+            android:layout_height="85dp"
+            android:layout_marginTop="16dp"
+            android:text="Connect to Bluetooth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lockbtn" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/bluetooth_connect_btn"
-        android:layout_width="236dp"
-        android:layout_height="88dp"
-        android:layout_below="@id/lock_img"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="84dp"
-        android:layout_marginTop="203dp"
-        android:layout_marginEnd="89dp"
-        android:backgroundTint="@color/common_google_signin_btn_text_light"
-        android:text="CONNECT TO BLUETOOTH"
-        android:textColor="@color/white" />
+</androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ImageView
-        android:id="@+id/lock_img"
-        android:layout_width="179dp"
-        android:layout_height="166dp"
-        android:layout_below="@id/subtitle"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="115dp"
-        android:layout_marginTop="55dp"
-        android:layout_marginEnd="117dp"
-        android:background="@drawable/lockstate"
-        android:text="CLOSE"
-        android:textColor="@color/white" />
-
-
-</RelativeLayout>
